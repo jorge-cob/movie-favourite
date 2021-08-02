@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { CardList } from './components/card-list/card-list';
+import { SearchBox } from './components/search-box/search-box';
 
 
 const mockMovies = [
@@ -31,13 +32,14 @@ function App() {
   );
 
   function onSearchChange(event: React.FormEvent<HTMLInputElement>) {
-    let button = event.target as HTMLInputElement;
-    setSearchText(button.value);
+    let searchField = event.target as HTMLInputElement;
+    setSearchText(searchField.value);
   };
 
   return (
     <div className='App'>
         <h1>Movie Database</h1>
+        <SearchBox onSearchChange={onSearchChange} />
         <CardList movies={movies} />
       </div>
   );
