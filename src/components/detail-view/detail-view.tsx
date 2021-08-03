@@ -7,7 +7,6 @@ interface Movie {
   movie: {
     id: string;
     title: string;
-    description: string;
     release_date: string;
     vote_average: string;
     poster_path: string;
@@ -16,8 +15,11 @@ interface Movie {
 }
 
 const DetailView: React.FC<Movie> = ({movie}) => {
-
-  return (
+  const imagePath = movie.poster_path 
+    ? `url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path})` 
+    : `url(https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)`;
+  
+    return (
     <DetailContainer>
       <div className='header'>
         <h1>{movie.title}</h1>
@@ -27,7 +29,7 @@ const DetailView: React.FC<Movie> = ({movie}) => {
           <div 
             className='background-image'
             style={{
-              backgroundImage: `url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path})`
+              backgroundImage: imagePath
             }}
           />
         </div>
