@@ -6,7 +6,7 @@ interface Movie {
   release_date: string;
   overview: string;
   poster_path: string;
-  id: number;
+  id: string;
 }
 
 interface MovieListProps {

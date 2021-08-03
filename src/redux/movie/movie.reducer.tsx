@@ -4,13 +4,15 @@ interface MovieState {
   movies: string[],
   isFetching: boolean,
   errorMessage: string
+  favorites: []
 }
 
 
 const INITIAL_STATE: MovieState = {  
   movies: [],
   isFetching: false,
-  errorMessage: ''
+  errorMessage: '',
+  favorites: []
 }
 
 const movieReducer = (state = INITIAL_STATE, action: MoviesAction) => {
@@ -31,6 +33,16 @@ const movieReducer = (state = INITIAL_STATE, action: MoviesAction) => {
         ...state,
         isFetching: false,
         errorMessage: action.error
+      }
+    case 'ADD_TO_FAVOURITES':
+      return {
+        ...state,
+        favorites: [...state.favorites, action.id]
+      }
+    case 'REMOVE_FROM_FAVOURITES':
+      return {
+        ...state,
+        favorites: state.favorites.filter(id => id !== action.id)
       }
     default:
       return state;
