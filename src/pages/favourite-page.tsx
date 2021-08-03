@@ -13,7 +13,7 @@ interface Movies {
 }
 
 const FavouritePage = () => {
-  const { favorites }: Movies  = useSelector(fetchedMovies); 
+  const { favorites }: Movies  = useSelector(fetchedMovies);   
   return (
     <div className='App'>
       <h1>Movie Database</h1>
