@@ -21,13 +21,14 @@ const mockMovies = [
   },
 ];
 
-it('should render CardList component', () => {
-  const component = shallow(<CardList movies={mockMovies} />)
-  expect.assertions(1);
-  expect(component).toMatchSnapshot();
-});
-it('should render CardList component with no movies', () => {
-  const component = shallow(<CardList movies={[]} />)
-  expect.assertions(1);
-  expect(component).toMatchSnapshot();
+describe('CardList', () => {
+
+  it('should render CardList component', () => {
+    const component = shallow(<CardList movies={mockMovies} />)
+    expect(component).toMatchSnapshot();
+  });
+  it('should render CardList component with no movies', () => {
+    const component = shallow(<CardList movies={[]} />)
+    expect(component).toMatchSnapshot();
+  });
 });

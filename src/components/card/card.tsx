@@ -32,7 +32,7 @@ const Card = ({movieDetails, history}: MovieDetails1) => {
     dispatch(removeFromFavourites(id));
   }
   return (
-    <CardItem onClick={() => history.push(`/${id}`)}>
+    <CardItem id={id} onClick={() => history.push(`/${id}`)}>
       { poster_path ?
         <div
           className='background-image'
