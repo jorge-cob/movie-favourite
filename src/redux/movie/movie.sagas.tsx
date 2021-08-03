@@ -28,7 +28,7 @@ export function* fetchMoviesAsync(payload: Object) {
 
 export function* fetchMoviesStart() {
   yield takeLatest(
-    'FETCH_MOVIES_START' as any,
+    'FETCH_MOVIES_START' as string,
     fetchMoviesAsync
   )
 };

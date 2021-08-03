@@ -22,3 +22,4 @@ export const persistor = persistStore(store as any);
 
 export default { store, persistor };
 
+export type RootState = ReturnType<typeof store.getState>;
