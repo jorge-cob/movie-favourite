@@ -8,7 +8,7 @@ export type MoviesAction =
   | { type: 'FETCH_MOVIES_SUCCESS'; movies: MoviesData }
   | { type: 'FETCH_MOVIES_FAILURE'; error: string }
   | { type: 'REMOVE_FROM_FAVOURITES'; id: string }
-  | { type: 'ADD_TO_FAVOURITES'; id: string };
+  | { type: 'ADD_TO_FAVOURITES'; movieDetails: Object };
 
 
 export function fetchMoviesStart(searchText: string): MoviesAction {
@@ -27,6 +27,6 @@ export function removeFromFavourites(id: string): MoviesAction {
   return { type: 'REMOVE_FROM_FAVOURITES', id };
 }
 
-export function addToFavourites(id: string): MoviesAction {
-  return { type: 'ADD_TO_FAVOURITES', id };
+export function addToFavourites(movieDetails: Object): MoviesAction {
+  return { type: 'ADD_TO_FAVOURITES', movieDetails };
 }

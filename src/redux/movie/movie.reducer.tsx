@@ -37,12 +37,12 @@ const movieReducer = (state = INITIAL_STATE, action: MoviesAction) => {
     case 'ADD_TO_FAVOURITES':
       return {
         ...state,
-        favorites: [...state.favorites, action.id]
+        favorites: [...state.favorites, action.movieDetails]
       }
     case 'REMOVE_FROM_FAVOURITES':
       return {
         ...state,
-        favorites: state.favorites.filter(id => id !== action.id)
+        favorites: state.favorites.filter(favourite => favourite['id'] !== action.id)
       }
     default:
       return state;

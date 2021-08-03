@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { History, LocationState } from 'history';
 
 import { CardList } from '../components/card-list/card-list';
 import { SearchBox } from '../components/search-box/search-box';
@@ -13,10 +15,15 @@ const MovieListWithSpinner = WithSpinner(CardList);
 
 interface Movies {
   movies: any[];
+  favorites: any[];
   isFetching: boolean;
 }
 
-const HomePage = () => {
+interface HistoryProps extends RouteComponentProps<any> {
+  history: History<LocationState>;
+}
+
+const HomePage = ({history}: HistoryProps) => {
   const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
   const { movies, isFetching }: Movies  = useSelector(fetchedMovies);
@@ -32,9 +39,10 @@ const HomePage = () => {
     <div className='App'>
       <h1>Movie Database</h1>
       <SearchBox onSearchChange={onSearchChange} onSearchClick={onSearchClick} />
+      <button onClick={() => history.push('/favourites')}>See my favourite movies</button>
       <MovieListWithSpinner isLoading={isFetching} movies={movies}/>
     </div>
   );
 }
 
-export default HomePage;
+export default withRouter(HomePage);

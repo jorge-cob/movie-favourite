@@ -22,12 +22,13 @@ const imageStyles: Object = {
   height: '30vw',
 }
 
-const Card = ({movieDetails: { title, release_date, overview, poster_path, id }, history}: MovieDetails1) => {
+const Card = ({movieDetails, history}: MovieDetails1) => {
+  const { title, release_date, overview, poster_path, id } = movieDetails;
   const dispatch = useDispatch();
   const isFavourite = useSelector(state => movieIsFavourite(state, id));
   function handleAddToFavourites(event: any) {
     event.stopPropagation();
-    dispatch(addToFavourites(id));
+    dispatch(addToFavourites(movieDetails));
   }
   function handleRemoveFromFavourites(event: any) {
     event.stopPropagation();
