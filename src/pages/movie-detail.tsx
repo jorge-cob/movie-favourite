@@ -1,46 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RouteComponentProps } from "react-router-dom";
-import { getMovieById } from '../redux/movie/movie.selectors';
-import { DetailContainer } from './movie-detail.styles';
+import DetailView from '../components/detail-view/detail-view';
+import { fetchedMovies } from '../redux/movie/movie.selectors';
+import WithSpinner from '../components/with-spinner/with-spinner';
+import { fetchMovieDetailStart } from '../redux/movie/movie.actions';
 
+const MovieDetailWithSpinner = WithSpinner(DetailView);
 
-
-interface Movie extends RouteComponentProps<any> {
+interface MovieProps {
+  selectedMovie: any[];
+  isFetching: boolean;
 }
 
-const MovieDetails: React.FC<Movie> = (props) => {
-  
+interface MovieMatch extends RouteComponentProps<any> {}
+
+const MovieDetails: React.FC<MovieMatch> = (props) => {
+  const dispatch = useDispatch();
   const itemId = props.match.params.movieId;
-  const movieDetails = useSelector((state) => getMovieById(state, itemId));
+  const { selectedMovie, isFetching }: MovieProps  = useSelector(fetchedMovies);
+  useEffect(() => {
+    dispatch(fetchMovieDetailStart(itemId));
+  }, []);
 
   return (
-    <DetailContainer>
-      <div className='header'>
-        <h1>{movieDetails.title}</h1>
-      </div>
-      <div className='content-container'>
-        <div className='image-container'>
-          <div 
-            className='background-image'
-            style={{
-              backgroundImage: `url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movieDetails.poster_path})`
-            }}
-          />
-        </div>
-        <div className='content'>
-          <p>
-            <strong>Release date:</strong> {movieDetails.release_date}
-          </p>
-          <p>
-            <strong>Overview:</strong> {movieDetails.overview}
-          </p>
-          <p>
-            <strong>Vote average:</strong> {movieDetails.vote_average}
-          </p>
-        </div>
-      </div>
-    </DetailContainer>
+    <MovieDetailWithSpinner isLoading={isFetching} movie={selectedMovie}/>
   );
 }
 
