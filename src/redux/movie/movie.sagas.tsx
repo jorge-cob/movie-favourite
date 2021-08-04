@@ -21,6 +21,7 @@ function fetchMovieDetailApi({id}: any) {
 }
 
 export function* fetchMoviesAsync(payload: Object) {
+  yield console.log('payload', payload);
   const { response, error } = yield call(fetchMoviesApi, payload);
   if (response) {
     yield put(fetchMoviesSuccess(response.data.results));
@@ -41,14 +42,14 @@ export function* fetchMovieDetailAsync(payload: Object) {
   }
 };
 
-export function* fetchMoviesStart() {
+export function* fetchMoviesStartApi() {
   yield takeLatest(
     'FETCH_MOVIES_START' as string,
     fetchMoviesAsync
   )
 };
 
-export function* fetchMovieDetailStart() {
+export function* fetchMovieDetailStartApi() {
   yield takeLatest(
     'FETCH_MOVIE_DETAIL_START' as string,
     fetchMovieDetailAsync
@@ -57,7 +58,7 @@ export function* fetchMovieDetailStart() {
 
 export function* movieSagas() {
   yield all([
-    call(fetchMoviesStart),
-    call(fetchMovieDetailStart),
+    call(fetchMoviesStartApi),
+    call(fetchMovieDetailStartApi),
   ]);
 };
