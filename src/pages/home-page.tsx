@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { History, LocationState } from 'history';
 
 import { CardList } from '../components/card-list/card-list';
@@ -34,15 +34,18 @@ const HomePage = ({history}: HistoryProps) => {
   function onSearchClick() {
     dispatch(fetchMoviesStart(searchText));
   };
+  function onCardClick(id: string) {
+    history.push(`/${id}`);
+  }
 
   return (
     <div className='App'>
       <h1>Movie Database</h1>
       <SearchBox onSearchChange={onSearchChange} onSearchClick={onSearchClick} />
       <button onClick={() => history.push('/favourites')}>See my favourite movies</button>
-      <MovieListWithSpinner isLoading={isFetching} movies={movies}/>
+      <MovieListWithSpinner isLoading={isFetching} movies={movies} onCardClick={onCardClick}/>
     </div>
   );
 }
 
-export default withRouter(HomePage);
+export default HomePage;

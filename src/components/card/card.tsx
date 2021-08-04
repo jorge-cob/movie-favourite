@@ -1,12 +1,10 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { History, LocationState } from 'history';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavourites, removeFromFavourites } from '../../redux/movie/movie.actions';
 import { movieIsFavourite } from '../../redux/movie/movie.selectors';
 import { CardItem } from './card.styles';
 
-interface MovieDetails1 extends RouteComponentProps<any> {
+interface MovieDetails1 {
   movieDetails: {
     title: string;
     release_date: string;
@@ -14,12 +12,11 @@ interface MovieDetails1 extends RouteComponentProps<any> {
     poster_path: string;
     id: string;
   },
-  history: History<LocationState>;
+  onClick: (id: string) => void
 }
 
 
-
-const Card = ({movieDetails, history}: MovieDetails1) => {
+const Card = ({movieDetails, onClick}: MovieDetails1) => {
   const { title, release_date, poster_path, id } = movieDetails;
   const dispatch = useDispatch();
   const isFavourite = useSelector(state => movieIsFavourite(state, id));
@@ -32,7 +29,7 @@ const Card = ({movieDetails, history}: MovieDetails1) => {
     dispatch(removeFromFavourites(id));
   }
   return (
-    <CardItem id={id} onClick={() => history.push(`/${id}`)}>
+    <CardItem id={`card_item_${id}`} onClick={() => onClick(id)}>
       { poster_path ?
         <div
           className='background-image'
@@ -53,7 +50,7 @@ const Card = ({movieDetails, history}: MovieDetails1) => {
       <div className='content'>
         <h1 className='title'>{title.toUpperCase()}</h1>
         <span className='subtitle'>{release_date}</span>
-        <button onClick={isFavourite ? event => handleRemoveFromFavourites(event) : event => handleAddToFavourites(event)}>
+        <button id={`favourites_button_${id}`} onClick={isFavourite ? event => handleRemoveFromFavourites(event) : event => handleAddToFavourites(event)}>
           {isFavourite ? 'Remove from favourites' : 'Add to favourites'}
         </button>
       </div>
@@ -61,4 +58,4 @@ const Card = ({movieDetails, history}: MovieDetails1) => {
   );
 };
 
-export default withRouter(Card);
+export default Card;

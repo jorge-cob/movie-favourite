@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CardList /> should render CardList component 1`] = `ShallowWrapper {}`;
-
 exports[`CardList should render CardList component 1`] = `ShallowWrapper {}`;
 
 exports[`CardList should render CardList component with no movies 1`] = `ShallowWrapper {}`;
-
-exports[`should render CardList component 1`] = `ShallowWrapper {}`;
-
-exports[`should render CardList component with no movies 1`] = `ShallowWrapper {}`;

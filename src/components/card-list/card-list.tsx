@@ -9,8 +9,9 @@ interface Movie {
   id: string;
 }
 
-interface MovieListProps {
+interface Props {
   movies: Movie[];
+  onCardClick: (id: string) => void;
 }
 
 const containerStyles: Object = {
@@ -22,11 +23,11 @@ const containerStyles: Object = {
 }
 
 
-export const CardList = ({movies}: MovieListProps) => {
+export const CardList = ({movies, onCardClick}: Props) => {
   return (
     <div style={containerStyles}>
       {movies.map(movie => (
-        <Card movieDetails={movie} key={movie.id}/>
+        <Card movieDetails={movie} onClick={onCardClick} key={movie.id}/>
       ))}
     </div>
   );
