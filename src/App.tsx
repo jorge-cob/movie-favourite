@@ -6,15 +6,19 @@ import FavouritePage from './pages/favourite-page';
 import movieDetail from './pages/movie-detail';
 
 import './App.css';
+import Header from './components/header/header';
 
 
 function App() {
   return (
-    <Switch>
-      <Route exact path='/' component={HomePage} />
-      <Route exact path='/favourites' component={FavouritePage} />
-      <Route exact path='/:movieId' component={movieDetail} />
-    </Switch>
+    <div className='App'>
+      <Header />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/favourites' component={FavouritePage} />
+        <Route exact path='/:movieId' component={movieDetail} />
+      </Switch>
+    </div>
   );
 }
 

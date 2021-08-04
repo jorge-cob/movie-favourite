@@ -1,4 +1,5 @@
 import React from 'react';
+import { BoxContainer, SearchButtonItem } from './search-box.styles';
 
 interface SearchProps {
   onSearchChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -6,15 +7,15 @@ interface SearchProps {
 }
 
 export const SearchBox = ({onSearchChange, onSearchClick}: SearchProps) => (
-  <>
+  <BoxContainer>
     <input
       className='search-box'
       type='search'
       placeholder='search movies'
       onChange={onSearchChange}
     />
-    <button className='search-button' onClick={onSearchClick}>
+    <SearchButtonItem className='search-button' onClick={onSearchClick}>
       Search
-    </button>
-  </>
+    </SearchButtonItem>
+  </BoxContainer>
 );

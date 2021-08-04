@@ -26,10 +26,10 @@ const FavouritePage = ({history}: HistoryInterface) => {
     history.push(`/${id}`);
   }
   return (
-    <div className='App'>
-      <h1>Movie Database</h1>
+    <>
+      <h1>My favourite movies</h1>
       <CardList movies={favorites} onCardClick={onCardClick} />
-    </div>
+    </>
   );
 }
 

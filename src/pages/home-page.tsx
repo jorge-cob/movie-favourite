@@ -10,7 +10,6 @@ import WithSpinner from '../components/with-spinner/with-spinner';
 import { fetchMoviesStart } from '../redux/movie/movie.actions';
 import { fetchedMovies } from '../redux/movie/movie.selectors';
 
-
 const MovieListWithSpinner = WithSpinner(CardList);
 
 interface Movies {
@@ -39,12 +38,11 @@ const HomePage = ({history}: HistoryProps) => {
   }
 
   return (
-    <div className='App'>
-      <h1>Movie Database</h1>
+    <>
+      <h1>Movie database</h1>
       <SearchBox onSearchChange={onSearchChange} onSearchClick={onSearchClick} />
-      <button onClick={() => history.push('/favourites')}>See my favourite movies</button>
       <MovieListWithSpinner isLoading={isFetching} movies={movies} onCardClick={onCardClick}/>
-    </div>
+    </>
   );
 }
 
