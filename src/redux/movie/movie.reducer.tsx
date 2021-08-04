@@ -1,7 +1,7 @@
 import { MoviesAction } from './movie.actions';
 
 interface MovieState {  
-  movies: string[],
+  movies: [],
   isFetching: boolean,
   errorMessage: string,
   favorites: [],

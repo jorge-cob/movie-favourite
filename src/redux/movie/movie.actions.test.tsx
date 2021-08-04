@@ -9,6 +9,8 @@ import {
   fetchMovieDetailFailure
 } from './movie.actions';
 
+
+
 const mockMovies = [
   {
     id: '522',
