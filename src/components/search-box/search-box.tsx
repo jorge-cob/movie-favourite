@@ -3,7 +3,7 @@ import { BoxContainer, SearchButtonItem } from './search-box.styles';
 
 interface SearchProps {
   onSearchChange: React.ChangeEventHandler<HTMLInputElement>;
-  onSearchClick(): any;
+  onSearchClick: () => void;
 }
 
 export const SearchBox = ({onSearchChange, onSearchClick}: SearchProps) => (

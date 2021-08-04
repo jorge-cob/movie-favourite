@@ -10,8 +10,8 @@ import { fetchedMovies } from '../redux/movie/movie.selectors';
 
 
 interface Movies {
-  movies: any[];
-  favorites: any[];
+  movies: [];
+  favorites: [];
   isFetching: boolean;
 }
 

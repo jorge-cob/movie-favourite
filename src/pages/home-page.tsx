@@ -13,8 +13,8 @@ import { fetchedMovies } from '../redux/movie/movie.selectors';
 const MovieListWithSpinner = WithSpinner(CardList);
 
 interface Movies {
-  movies: any[];
-  favorites: any[];
+  movies: [];
+  favorites: [];
   isFetching: boolean;
 }
 

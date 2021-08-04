@@ -9,7 +9,7 @@ import { fetchMovieDetailStart } from '../redux/movie/movie.actions';
 const MovieDetailWithSpinner = WithSpinner(DetailView);
 
 interface MovieProps {
-  selectedMovie: any[];
+  selectedMovie: [];
   isFetching: boolean;
 }
 

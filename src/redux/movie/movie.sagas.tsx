@@ -8,7 +8,7 @@ import {
 } from './movie.actions';
 
 const apiKey = process.env.REACT_APP_API_KEY;
-function fetchMoviesApi({searchText}: any) {
+function fetchMoviesApi({payload: { searchText }}: any) {
   return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}`)
     .then(response => ({ response }))
     .catch(error => ({ error }))
