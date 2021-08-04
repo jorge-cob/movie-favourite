@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { SearchBox } from './search-box';
 
-describe('CartDropdown component', () => {
+describe('SearchBox component', () => {
 
   const onSearchChange = jest.fn();
   const onSearchClick = jest.fn();

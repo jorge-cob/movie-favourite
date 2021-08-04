@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../redux/react-redux-hooks';
 import { addToFavourites, removeFromFavourites } from '../../redux/movie/movie.actions';
 import { movieIsFavourite } from '../../redux/movie/movie.selectors';
 import { CardItem } from './card.styles';
@@ -19,7 +19,7 @@ interface MovieDetails1 {
 const Card = ({movieDetails, onClick}: MovieDetails1) => {
   const { title, release_date, poster_path, id } = movieDetails;
   const dispatch = useDispatch();
-  const isFavourite = useSelector(state => movieIsFavourite(state, id));
+  const isFavourite = useSelector((state: any) => movieIsFavourite(state, id));
   function handleAddToFavourites(event: any) {
     event.stopPropagation();
     dispatch(addToFavourites(movieDetails));
