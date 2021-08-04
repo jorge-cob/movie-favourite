@@ -21,6 +21,7 @@ Movie Favourite uses a number of open source projects to work properly:
 
 - Node LTS version
 - Yarn 1.10.1 or above
+- Get your own API key from 'https://themoviedb.org' and add it to your .env file
 
 ## Scripts
 
