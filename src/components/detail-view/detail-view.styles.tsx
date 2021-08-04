@@ -11,21 +11,26 @@ export const DetailContainer = styled.div`
   .content-container {
     justify-content:center;
     align-items:center;
-    display: inline-block;
-    text-align: center;
-
+    display: flex;
+    text-align: left;
+    
   }
   .background-image {
     height: 600px;
-
+    width: 400px;
     background-position: center;
     background-repeat: no-repeat;
   } 
   .image-container {
-    width: 100%;
+    width: 500px;
     align-items: center;
     justify-content: center;
   }
 `;
 
 
+
+export const ParagraphItem = styled.p`
+  justify-content: center;
+  width: 600px;
+`;

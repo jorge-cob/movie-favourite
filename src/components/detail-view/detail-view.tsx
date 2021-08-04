@@ -1,5 +1,5 @@
 import React from 'react';
-import { DetailContainer } from './detail-view.styles';
+import { DetailContainer, ParagraphItem } from './detail-view.styles';
 
 
 
@@ -21,9 +21,7 @@ const DetailView: React.FC<Movie> = ({movie}) => {
   
     return (
     <DetailContainer>
-      <div className='header'>
-        <h1>{movie.title}</h1>
-      </div>
+
       <div className='content-container'>
         <div className='image-container'>
           <div 
@@ -34,12 +32,15 @@ const DetailView: React.FC<Movie> = ({movie}) => {
           />
         </div>
         <div className='content'>
+          <div className='header'>
+            <h1>{movie.title}</h1>
+          </div>
           <p>
             <strong>Release date:</strong> {movie.release_date}
           </p>
-          <p>
+          <ParagraphItem>
             <strong>Overview:</strong> {movie.overview}
-          </p>
+          </ParagraphItem>
           <p>
             <strong>Vote average:</strong> {movie.vote_average}
           </p>
