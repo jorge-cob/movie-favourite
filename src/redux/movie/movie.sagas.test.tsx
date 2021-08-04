@@ -1,4 +1,4 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 
 import { fetchMoviesAsync, fetchMovieDetailAsync, fetchMoviesStartApi, fetchMovieDetailStartApi} from './movie.sagas';
 

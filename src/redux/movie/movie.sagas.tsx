@@ -7,15 +7,15 @@ import {
   fetchMovieDetailFailure
 } from './movie.actions';
 
-const API_KEY = '33c34cc56864062265b1dc6fa5d28414';
+const apiKey = process.env.REACT_APP_API_KEY;
 function fetchMoviesApi({searchText}: any) {
-  return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchText}`)
+  return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}`)
     .then(response => ({ response }))
     .catch(error => ({ error }))
 }
 
 function fetchMovieDetailApi({id}: any) {
-  return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
+  return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`)
     .then(response => ({ response }))
     .catch(error => ({ error }))
 }
