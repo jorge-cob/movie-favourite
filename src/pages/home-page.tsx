@@ -15,7 +15,7 @@ const MovieListWithSpinner = WithSpinner(CardList);
 interface Movies {
   movies: [];
   favorites: [];
-  isFetching: boolean;
+  isFetching: boolean | false;
 }
 
 interface HistoryProps extends RouteComponentProps<any> {
