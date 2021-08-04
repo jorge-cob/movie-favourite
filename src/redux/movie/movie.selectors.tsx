@@ -10,4 +10,3 @@ export const getMovieById = (state: any, itemId: string) => {
 }
 
 export const movieIsFavourite = (state: any, itemId: string) => state.movie.favorites.filter(({ id }: any) => id === parseInt(itemId))[0]
-
