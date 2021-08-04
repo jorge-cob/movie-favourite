@@ -1,6 +1,8 @@
 # movie-favourite  v1.0
 ## Find the movies you love and save them as favourites  
 
+## Demo
+- [Movie Favourite](https://movie-favourites.herokuapp.com/) 
 
 ## Features
 
