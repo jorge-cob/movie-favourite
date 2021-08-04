@@ -25,10 +25,14 @@ const containerStyles: Object = {
 
 export const CardList = ({movies, onCardClick}: Props) => {
   return (
-    <div style={containerStyles}>
-      {movies.map(movie => (
-        <Card movieDetails={movie} onClick={onCardClick} key={movie.id}/>
-      ))}
-    </div>
+    movies.length > 0 ?(
+      <div style={containerStyles}>
+        {movies.map(movie => (
+          <Card movieDetails={movie} onClick={onCardClick} key={movie.id}/>
+        ))}
+      </div>
+    ) : (
+      <div> No movies to show! Go ahead and search </div>
+    )
   );
 };

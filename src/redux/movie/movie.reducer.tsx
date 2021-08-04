@@ -32,11 +32,18 @@ const movieReducer = (state = INITIAL_STATE, action: MoviesAction) => {
         isFetching: false
       }
     case 'FETCH_MOVIES_FAILURE':
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.error,
+        movies: []
+      }
     case 'FETCH_MOVIES_DETAIL_FAILURE':
       return {
         ...state,
         isFetching: false,
-        errorMessage: action.error
+        errorMessage: action.error,
+        movie: []
       }
     case 'ADD_TO_FAVOURITES':
       return {

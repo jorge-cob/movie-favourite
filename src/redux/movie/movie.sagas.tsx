@@ -21,13 +21,11 @@ function fetchMovieDetailApi({id}: any) {
 }
 
 export function* fetchMoviesAsync(payload: Object) {
-  yield console.log('payload', payload);
   const { response, error } = yield call(fetchMoviesApi, payload);
   if (response) {
     yield put(fetchMoviesSuccess(response.data.results));
   } else {
     yield put(fetchMoviesFailure(error.message));
-
   }
 };
 
