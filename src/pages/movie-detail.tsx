@@ -24,7 +24,7 @@ const MovieDetails: React.FC<MovieMatch> = (props) => {
   }, []);
 
   return (
-    <MovieDetailWithSpinner isLoading={isFetching} movie={selectedMovie}/>
+    <MovieDetailWithSpinner isLoading={isFetching} movie={selectedMovie} />
   );
 }
 

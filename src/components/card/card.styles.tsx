@@ -27,7 +27,7 @@ export const CardItem = styled.div`
   }
 
   &.large {
-    height: 380px;
+    height: 400px;
   }
 
   &:first-child {
@@ -47,7 +47,7 @@ export const CardItem = styled.div`
 
   .content {
     max-width: 10vw;
-    height: 90px;
+    height: 140px;
     padding: 0 25px;
     display: flex;
     flex-direction: column;

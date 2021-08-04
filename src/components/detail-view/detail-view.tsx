@@ -2,7 +2,6 @@ import React from 'react';
 import { DetailContainer, ParagraphItem } from './detail-view.styles';
 
 
-
 interface Movie {
   movie: {
     id: string;
@@ -11,7 +10,7 @@ interface Movie {
     vote_average: string;
     poster_path: string;
     overview: string;
-  } 
+  },
 }
 
 const DetailView: React.FC<Movie> = ({movie}) => {

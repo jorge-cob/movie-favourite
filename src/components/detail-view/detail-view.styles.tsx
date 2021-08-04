@@ -28,8 +28,6 @@ export const DetailContainer = styled.div`
   }
 `;
 
-
-
 export const ParagraphItem = styled.p`
   justify-content: center;
   width: 600px;
