@@ -13,6 +13,7 @@ interface Movies {
   movies: [];
   favorites: [];
   isFetching: boolean;
+  currentMoviesPages: number;
 }
 
 interface HistoryInterface extends RouteComponentProps<any> {
@@ -20,7 +21,7 @@ interface HistoryInterface extends RouteComponentProps<any> {
 }
 
 const FavouritePage = ({history}: HistoryInterface) => {
-  const { favorites }: Movies  = useSelector(fetchedMovies);  
+  const { favorites, currentMoviesPages }: Movies  = useSelector(fetchedMovies);  
 
   function onCardClick(id: string) {
     history.push(`/${id}`);
@@ -28,7 +29,7 @@ const FavouritePage = ({history}: HistoryInterface) => {
   return (
     <>
       <h1>My favourite movies</h1>
-      <CardList movies={favorites} onCardClick={onCardClick} />
+      <CardList movies={favorites} onCardClick={onCardClick} currentMoviesPages={currentMoviesPages} />
     </>
   );
 }

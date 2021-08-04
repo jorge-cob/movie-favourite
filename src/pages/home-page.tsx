@@ -16,6 +16,7 @@ interface Movies {
   movies: [];
   favorites: [];
   isFetching: boolean | false;
+  currentMoviesPages: number;
 }
 
 interface HistoryProps extends RouteComponentProps<any> {
@@ -25,7 +26,7 @@ interface HistoryProps extends RouteComponentProps<any> {
 const HomePage = ({history}: HistoryProps) => {
   const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
-  const { movies, isFetching }: Movies  = useSelector(fetchedMovies);
+  const { movies, isFetching, currentMoviesPages }: Movies  = useSelector(fetchedMovies);
   function onSearchChange(event: React.FormEvent<HTMLInputElement>) {
     let searchField = event.target as HTMLInputElement;
     setSearchText(searchField.value);
@@ -41,7 +42,7 @@ const HomePage = ({history}: HistoryProps) => {
     <>
       <h1>Movie database</h1>
       <SearchBox onSearchChange={onSearchChange} onSearchClick={onSearchClick} />
-      <MovieListWithSpinner isLoading={isFetching} movies={movies} onCardClick={onCardClick}/>
+      <MovieListWithSpinner isLoading={isFetching} movies={movies} onCardClick={onCardClick} currentMoviesPages={currentMoviesPages} />
     </>
   );
 }

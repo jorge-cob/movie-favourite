@@ -2,6 +2,8 @@ import { MoviesAction } from './movie.actions';
 
 interface MovieState {  
   movies: [],
+  currentMoviesPages: number,
+  currentSelectedPage: 0,
   isFetching: boolean,
   errorMessage: string,
   favorites: [],
@@ -11,6 +13,8 @@ interface MovieState {
 
 const INITIAL_STATE: MovieState = {  
   movies: [],
+  currentMoviesPages: 0,
+  currentSelectedPage: 0,
   isFetching: false,
   errorMessage: '',
   favorites: [],
@@ -28,7 +32,8 @@ const movieReducer = (state = INITIAL_STATE, action: MoviesAction) => {
     case 'FETCH_MOVIES_SUCCESS':
       return {
         ...state,
-        movies: action.movies,
+        movies: action.moviesQuery.results,
+        currentMoviesPages: action.moviesQuery.total_pages,
         isFetching: false
       }
     case 'FETCH_MOVIES_FAILURE':

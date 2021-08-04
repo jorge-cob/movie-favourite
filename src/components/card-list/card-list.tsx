@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../card/card';
+import Pagination from '../pagination/pagination';
 
 interface Movie {
   title: string;
@@ -11,6 +12,7 @@ interface Movie {
 
 interface Props {
   movies: Movie[];
+  currentMoviesPages: number;
   onCardClick: (id: string) => void;
 }
 
@@ -23,13 +25,14 @@ const containerStyles: Object = {
 }
 
 
-export const CardList = ({movies, onCardClick}: Props) => {
+export const CardList = ({movies, onCardClick, currentMoviesPages}: Props) => {
   return (
     movies.length > 0 ?(
       <div style={containerStyles}>
         {movies.map(movie => (
           <Card movieDetails={movie} onClick={onCardClick} key={movie.id}/>
         ))}
+        <Pagination currentMoviesPages={currentMoviesPages} />
       </div>
     ) : (
       <div> No movies to show! Go ahead and search </div>

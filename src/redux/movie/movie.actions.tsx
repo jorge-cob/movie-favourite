@@ -1,6 +1,7 @@
 
-export interface MoviesData {
-  movies: string[];
+export interface Results {
+    results: string[];
+    total_pages: number
 }
 
 export interface MovieDetailData {
@@ -9,21 +10,20 @@ export interface MovieDetailData {
 
 export type MoviesAction =
   | { type: 'FETCH_MOVIES_START'; searchText: string }
-  | { type: 'FETCH_MOVIES_SUCCESS'; movies: MoviesData }
+  | { type: 'FETCH_MOVIES_SUCCESS'; moviesQuery: Results }
   | { type: 'FETCH_MOVIES_FAILURE'; error: string }
   | { type: 'REMOVE_FROM_FAVOURITES'; id: string }
   | { type: 'ADD_TO_FAVOURITES'; movieDetails: Object }
   | { type: 'FETCH_MOVIE_DETAIL_START'; id: string }
   | { type: 'FETCH_MOVIES_DETAIL_SUCCESS'; movie: MovieDetailData }
-  | { type: 'FETCH_MOVIES_DETAIL_FAILURE'; error: string };
-
+  | { type: 'FETCH_MOVIES_DETAIL_FAILURE'; error: string }
 
 export function fetchMoviesStart(searchText: string): MoviesAction {
   return { type: 'FETCH_MOVIES_START', searchText };
 }
 
-export function fetchMoviesSuccess(movies: MoviesData): MoviesAction {
-  return { type: 'FETCH_MOVIES_SUCCESS', movies };
+export function fetchMoviesSuccess(moviesQuery: Results): MoviesAction {
+  return { type: 'FETCH_MOVIES_SUCCESS', moviesQuery };
 }
 
 export function fetchMoviesFailure(error: string): MoviesAction {

@@ -23,7 +23,7 @@ function fetchMovieDetailApi({id}: any) {
 export function* fetchMoviesAsync(payload: Object) {
   const { response, error } = yield call(fetchMoviesApi, payload);
   if (response) {
-    yield put(fetchMoviesSuccess(response.data.results));
+    yield put(fetchMoviesSuccess(response.data));
   } else {
     yield put(fetchMoviesFailure(error.message));
   }
